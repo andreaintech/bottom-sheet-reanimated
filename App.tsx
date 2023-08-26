@@ -20,7 +20,7 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 function App(): JSX.Element {
   const offset = useSharedValue(0);
   const [isOpen, setOpen] = useState(false);
-  const [accent, setAccent] = useState(ACCENT_COLOR);
+  const accent = useSharedValue(ACCENT_COLOR);
 
   const toggleSheet = () => {
     setOpen(!isOpen);
@@ -69,7 +69,7 @@ function App(): JSX.Element {
               >
                 <AccentPicker
                   onPick={(color: string) => {
-                    setAccent(color);
+                    accent.value = color;
                     toggleSheet();
                   }}
                 />

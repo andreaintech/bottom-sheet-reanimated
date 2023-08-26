@@ -1,36 +1,42 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text } from "react-native";
+import Animated, { useAnimatedStyle, withDelay, withTiming } from "react-native-reanimated";
 
 import { ACCENT_COLOR, BORDER_COLOR } from "../misc/colors";
+import { messages } from "../misc/messages";
 
 function Message(props) {
   const { message, accent } = props;
+  const messagesFromMe = messages.filter((msg) => msg.from === "me");
+  const index = messagesFromMe.findIndex((msg) => msg.id === message.id);
+
+  const background = useAnimatedStyle(() => ({
+    backgroundColor: withDelay(150 * index, withTiming(accent.value)),
+  }));
+  const color = useAnimatedStyle(() => ({
+    color: withDelay(
+      150 * index, 
+      isDarkColor(accent.value) ? withTiming("white") : withTiming("black")),
+  }));
 
   return (
-    <View
+    <Animated.View
       style={[
         styles.message,
         message.from === "me"
-          ? [styles.messageMe, { backgroundColor: accent }]
+          ? [styles.messageMe, background]
           : styles.messageThem,
       ]}
     >
-      <Text
+      <Animated.Text
         style={[
           styles.messageText,
-          {
-            color:
-              message.from === "me"
-                ? isDarkColor(accent)
-                  ? "white"
-                  : "black"
-                : "black",
-          },
+          message.from === "me" ? color : {color: "black"},
         ]}
       >
         {message.message}
-      </Text>
-    </View>
+      </Animated.Text>
+    </Animated.View>
   );
 }
 

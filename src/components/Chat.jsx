@@ -7,12 +7,13 @@ import {
   FlatList,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Message from "./Message";
 
+import Message from "./Message";
 import SettingsIcon from "../icons/SettingsIcon";
 import ArrowLeftIcon from "../icons/ArrowLeftIcon";
 import MicrophoneIcon from "../icons/MicrophoneIcon";
 import SendIcon from "../icons/SendIcon";
+
 import { messages } from "../misc/messages";
 import { BORDER_COLOR, PRIMARY_COLOR } from "../misc/colors";
 
@@ -30,6 +31,7 @@ function Chat(props) {
           </TouchableOpacity>
         </View>
       </SafeAreaView>
+
       <FlatList
         data={messages}
         inverted
@@ -39,6 +41,7 @@ function Chat(props) {
         )}
         keyExtractor={(item) => item.id}
       />
+      
       <SafeAreaView style={styles.footerContainer} edges={["bottom"]}>
         <View style={styles.wrapper}>
           <MicrophoneIcon />

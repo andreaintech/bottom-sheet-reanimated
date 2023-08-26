@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Dimensions,
 } from "react-native";
+
 import { PRIMARY_COLOR, colors } from "../misc/colors";
 import { HEIGHT } from "../misc/consts";
 
@@ -16,6 +17,7 @@ function AccentPicker({ onPick }) {
   return (
     <>
       <Text style={styles.label}>Choose accent</Text>
+      
       <View style={styles.container}>
         {colors.map((color) => (
           <TouchableOpacity
