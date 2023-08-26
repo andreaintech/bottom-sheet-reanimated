@@ -1,3 +1,5 @@
+## Bottom Sheet Reanimated
+
 This repository contains the source code of a project of a Bottom Sheet Animated using React Native Reanimated. The original source code is from [reanimated-bottom-sheet-video from Software Mansion.](https://github.com/software-mansion-labs/reanimated-bottom-sheet-video)
 
 ## Running the project
